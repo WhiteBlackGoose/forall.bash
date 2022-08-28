@@ -4,6 +4,12 @@ if [[ "$1" == "help" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]; then
     printf "Automates simple loops. Basically maps the given \n"
     printf "elements through the given function.\n\n"
 
+    printf "The first argument is list of elements (must be o\n"
+    printf "ne argument, not multiple).\n\n"
+
+    printf "The second argument is the command to execute (al\n"
+    printf "so must be one string).\n\n"
+
     printf "By default it only executes the given command, by\n"
     printf "providing each element of the list as the last ar\n"
     printf "gument.\n\n"
@@ -16,7 +22,9 @@ if [[ "$1" == "help" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]; then
     exit
 fi
 
-declare -a "args=($1)"
+nln=$(echo "$1")
+
+declare -a "args=($nln)"
 
 for i in "${args[@]}"
 do
@@ -28,5 +36,4 @@ do
     else
         eval "$2 '$i'"
     fi
-done
-
+done < <(echo "$1")
