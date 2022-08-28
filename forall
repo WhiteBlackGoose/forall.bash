@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [[ "$1" == "help" ]] || [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]; then
+    printf "Automates simple loops. Basically maps the given \n"
+    printf "elements through the given function.\n\n"
+
+    printf "By default it only executes the given command, by\n"
+    printf "providing each element of the list as the last ar\n"
+    printf "gument.\n\n"
+
+    printf "Arguments (provide as third argument without dash):\n\n"
+    printf "    i: provide each element as standard input inste\n"
+    printf "       ad of providing it as the last argument.\n\n"
+    printf "    p: print the each element next to correspondi\n"
+    printf "       ng output. (by default only runs the prompt)"
+    exit
+fi
+
+declare -a "args=($1)"
+
+for i in "${args[@]}"
+do
+    if [[ "$3" == *"p"* ]]; then
+        printf "$i: "
+    fi
+    if [[ "$3" == *"i"* ]]; then
+        echo "$i" | eval "$2"
+    else
+        eval "$2 '$i'"
+    fi
+done
+
