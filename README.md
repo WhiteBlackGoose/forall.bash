@@ -1,5 +1,7 @@
 # forall
 
+![demo](./demo-x1.6.gif)
+
 ## Installation
 
 Download and make it executable:
