@@ -30,13 +30,13 @@ Arguments (provide as third argument without dash):
 ### Ex. 1
 
 ```
-forall "$(ls)" "du -sh"
+forall "$(ls -Cb)" "du -sh"
 ```
 
 Runs the command `du -sh` for all folders in the given folder:
 ```
 ~/VirtualBox VMs
-12:06:29 $ forall "$(ls)" "du -sh"
+12:06:29 $ forall "$(ls -Cb)" "du -sh"
 6,7G	archcraft
 11G	Linux Mint
 8,0K	test
@@ -46,3 +46,32 @@ Runs the command `du -sh` for all folders in the given folder:
 
 ### Ex. 2
 
+```
+forall "10+3 12-11 'scale=3; 100/3'" bc i
+```
+
+`i` means that we pipe each element into the given command `bc`. Output:
+
+```
+~/VirtualBox VMs
+12:38:02 $ forall "10+3 12-11 'scale=3; 100/3'" bc i
+13
+1
+33.333
+```
+
+### Ex. 3
+
+Let's add `p` to print each input:
+```
+forall "10+3 12-11 'scale=3; 100/3'" bc ip
+```
+
+Output:
+```
+~/VirtualBox VMs
+12:38:50 $ forall "10+3 12-11 'scale=3; 100/3'" bc ip
+10+3: 13
+12-11: 1
+scale=3; 100/3: 33.333
+```
