@@ -1,5 +1,18 @@
 # forall
 
+## Installation
+
+Download and make it executable:
+```
+wget https://raw.githubusercontent.com/WhiteBlackGoose/forall.bash/main/forall
+chmod +x forall
+```
+
+Add it to your "$PATH":
+```
+echo 'export PATH="yourfolder:$PATH"' >> ~/.bashrc
+```
+
 ## Docs
 
 ```
